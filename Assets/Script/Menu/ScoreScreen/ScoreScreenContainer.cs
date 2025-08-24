@@ -8,9 +8,9 @@ namespace YARG.Menu.ScoreScreen
     public struct PlayerScoreCard
     {
         public bool IsHighScore;
-
+        public int HighScoreTemp;
         public YargPlayer Player;
-        public BaseStats  Stats;
+        public BaseStats Stats;
     }
 
     public struct ScoreScreenStats

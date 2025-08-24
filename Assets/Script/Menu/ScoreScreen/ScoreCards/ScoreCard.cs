@@ -33,6 +33,10 @@ namespace YARG.Menu.ScoreScreen
         [SerializeField]
         private TextMeshProUGUI _score;
         [SerializeField]
+        private TextMeshProUGUI _highScoreTemp;
+        [SerializeField]
+        private TextMeshProUGUI _scoreDelta;
+        [SerializeField]
         private StarView _starView;
         [SerializeField]
         private Transform _modifierIconContainer;
@@ -62,6 +66,7 @@ namespace YARG.Menu.ScoreScreen
         protected bool IsHighScore;
         protected YargPlayer Player;
         protected T Stats;
+        protected int HighScoreTemp;
 
         private void Awake()
         {
@@ -75,6 +80,14 @@ namespace YARG.Menu.ScoreScreen
             Stats = stats;
         }
 
+        public void Initialize(bool isHighScore, YargPlayer player, T stats, int highScoreTemp)
+        {
+            IsHighScore = isHighScore;
+            Player = player;
+            Stats = stats;
+            HighScoreTemp = highScoreTemp;
+        }
+
         public virtual void SetCardContents()
         {
             _playerName.text = Player.Profile.Name;
@@ -84,7 +97,6 @@ namespace YARG.Menu.ScoreScreen
 
             // Set percent
             _accuracyPercent.text = $"{Mathf.FloorToInt(Stats.Percent * 100f)}%";
-
 
             // Set background and foreground colors
             if (Player.Profile.IsBot)
@@ -122,6 +134,15 @@ namespace YARG.Menu.ScoreScreen
             }
 
             _score.text = Stats.TotalScore.ToString("N0");
+            _highScoreTemp.text = HighScoreTemp == 0
+                ? "<color=#B0B0B0>------</color>"
+                : $"<color=#B0B0B0>{HighScoreTemp.ToString("N0")}</color>";
+            int delta = Stats.TotalScore - HighScoreTemp;
+            string diffText = (delta >= 0 ? "+" : "") + delta.ToString("N0");
+            _scoreDelta.text = $"({diffText})";
+            Color color = delta >= 0 ? new Color(0f, 1f, 0f) : new Color(1f, 0f, 0f);
+            _scoreDelta.color = color;
+
             _starView.SetStars((int) Stats.Stars);
 
             _notesHit.text = $"{WrapWithColor(Stats.NotesHit)} / {Stats.TotalNotes}";

@@ -156,7 +156,7 @@ namespace YARG.Menu.ScoreScreen
                     case GameMode.FiveFretGuitar:
                     {
                         var card = Instantiate(_guitarCardPrefab, _cardContainer);
-                        card.Initialize(score.IsHighScore, score.Player, score.Stats as GuitarStats);
+                        card.Initialize(score.IsHighScore, score.Player, score.Stats as GuitarStats, score.HighScoreTemp);
                         card.SetCardContents();
                         break;
                     }
@@ -164,21 +164,21 @@ namespace YARG.Menu.ScoreScreen
                     case GameMode.FiveLaneDrums:
                     {
                         var card = Instantiate(_drumsCardPrefab, _cardContainer);
-                        card.Initialize(score.IsHighScore, score.Player, score.Stats as DrumsStats);
+                        card.Initialize(score.IsHighScore, score.Player, score.Stats as DrumsStats, score.HighScoreTemp);
                         card.SetCardContents();
                         break;
                     }
                     case GameMode.Vocals:
                     {
                         var card = Instantiate(_vocalsCardPrefab, _cardContainer);
-                        card.Initialize(score.IsHighScore, score.Player, score.Stats as VocalsStats);
+                        card.Initialize(score.IsHighScore, score.Player, score.Stats as VocalsStats, score.HighScoreTemp);
                         card.SetCardContents();
                         break;
                     }
                     case GameMode.ProKeys:
                     {
                         var card = Instantiate(_proKeysCardPrefab, _cardContainer);
-                        card.Initialize(score.IsHighScore, score.Player, score.Stats as ProKeysStats);
+                        card.Initialize(score.IsHighScore, score.Player, score.Stats as ProKeysStats, score.HighScoreTemp);
                         card.SetCardContents();
                         break;
                     }

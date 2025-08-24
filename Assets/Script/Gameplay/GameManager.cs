@@ -435,6 +435,7 @@ namespace YARG.Gameplay
                 PlayerScores = _players.Select(player => new PlayerScoreCard
                 {
                     IsHighScore = player.Score > player.LastHighScore,
+                    HighScoreTemp = player.LastHighScore ?? 0,
                     Player = player.Player,
                     Stats = player.BaseStats
                 }).ToArray(),
