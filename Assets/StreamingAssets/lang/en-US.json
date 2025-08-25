@@ -1168,6 +1168,10 @@
                 "Name": "Wrap-Around Navigation",
                 "Description": "Allow menus to jump to the bottom of a list when scrolling past the top, or jump to the top of a list when scrolling past the bottom."
             },
+            "ShowScoreDelta": {
+                "Name": "Show High Score Difference",
+                "Description": "Displays your previous high score and the difference from your current score on the scorecard after a song."
+            },
             "ReduceNoteSpeedByDifficulty": {
                 "Name": "Reduce Note Speed by Difficulty",
                 "Description": "Reduces the note speed if playing on a lower difficulty than Expert. The specified note speed is applied to Expert, and lower difficulties receive a reduction in speed. This setting does not affect vocal tracks."
@@ -1622,5 +1626,16 @@
                 }
             }
         }
-    }
+    },
+        "Setting": {
+            "AllowDuplicateSongs": {
+                "Name": "Allow Duplicate Songs",
+                "Description": "Allows duplicate songs to be scanned and displayed in the library. <color=white>Rescan required if changed!</color>"
+            },
+            "AmIAwesome": {
+                "Name": "Awesomeness Detection",
+                "Description": "Are you awesome?"
+            },
+        
+        }
 }

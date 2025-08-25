@@ -9,6 +9,7 @@ using YARG.Core.Game;
 using YARG.Helpers.Extensions;
 using YARG.Localization;
 using YARG.Player;
+using YARG.Settings;
 
 namespace YARG.Menu.ScoreScreen
 {
@@ -134,14 +135,24 @@ namespace YARG.Menu.ScoreScreen
             }
 
             _score.text = Stats.TotalScore.ToString("N0");
-            _highScoreTemp.text = HighScoreTemp == 0
-                ? "<color=#B0B0B0>------</color>"
-                : $"<color=#B0B0B0>{HighScoreTemp.ToString("N0")}</color>";
-            int delta = Stats.TotalScore - HighScoreTemp;
-            string diffText = (delta >= 0 ? "+" : "") + delta.ToString("N0");
-            _scoreDelta.text = $"({diffText})";
-            Color color = delta >= 0 ? new Color(0f, 1f, 0f) : new Color(1f, 0f, 0f);
-            _scoreDelta.color = color;
+            if (SettingsManager.Settings.ShowScoreDelta.Value)
+            {
+                _highScoreTemp.gameObject.SetActive(true);
+                _scoreDelta.gameObject.SetActive(true);
+                _highScoreTemp.text = HighScoreTemp == 0
+                    ? "<color=#B0B0B0>------</color>"
+                    : $"<color=#B0B0B0>{HighScoreTemp.ToString("N0")}</color>";
+                int delta = Stats.TotalScore - HighScoreTemp;
+                string diffText = (delta >= 0 ? "+" : "") + delta.ToString("N0");
+                _scoreDelta.text = $"({diffText})";
+                Color color = delta >= 0 ? new Color(0f, 1f, 0f) : new Color(1f, 0f, 0f);
+                _scoreDelta.color = color;
+            }
+            else
+            {
+                _highScoreTemp.gameObject.SetActive(false);
+                _scoreDelta.gameObject.SetActive(false);
+            }
 
             _starView.SetStars((int) Stats.Stars);
 

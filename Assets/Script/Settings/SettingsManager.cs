@@ -47,6 +47,7 @@ namespace YARG.Settings
                 nameof(Settings.VoiceActivatedVocalStarPower),
                 nameof(Settings.EnablePracticeSP),
                 nameof(Settings.PracticeRestartDelay),
+                
 
                 new HeaderMetadata("StatusBar"),
                 nameof(Settings.ShowBattery),
@@ -63,6 +64,7 @@ namespace YARG.Settings
                 nameof(Settings.PauseOnDeviceDisconnect),
                 nameof(Settings.PauseOnFocusLoss),
                 nameof(Settings.WrapAroundNavigation),
+                nameof(Settings.ShowScoreDelta),
                 nameof(Settings.AmIAwesome),
             },
             new SongManagerTab("SongManager", icon: "Songs")

@@ -28,6 +28,8 @@ namespace YARG.Settings
     {
         public class SettingContainer
         {
+            // Show score delta and previous high score on scorecards
+            public ToggleSetting ShowScoreDelta { get; } = new(true);
             /// <summary>
             /// Have the settings been initialized?
             /// </summary>
